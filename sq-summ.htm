@@ -1,0 +1,249 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-GB link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+style='font-size:20.0pt;line-height:107%'>SonarQube (SQ)</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SQ is a mature (2008) tool that uses
+pattern matching and dataflow analysis to analyze code and identify technical
+debt. It searches for <b>code smells</b>, bugs, security vulnerabilities. SQ
+provides linting capability for free, plus community &amp; subscription
+editions of other services. An organisational model for full implementation of
+SQ is as follows:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>Developers code
+in their IDEs and use&nbsp;<a href="https://sonarlint.org/" target="_blank">SonarLint</a>&nbsp;(see
+below) to run local analysis.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>Developers push
+their code into their favourite SCM : git, SVN, etc.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>CI/CD server
+triggers automatic build, plus execution of the SonarScanner required to run
+the SonarQube analysis.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>Analysis report
+is sent to the SonarQube Server for processing.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>SonarQube Server
+processes/stores analysis report results in SQ Database &amp; displays results
+in UI/dashboard.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>Developers
+review, comment, challenge issues to manage/reduce Technical Debt through the
+SonarQube UI.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:105%'><span
+style='font-size:16.0pt;line-height:105%'>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:105%'>Managers receive
+Reports from the analysis. Ops use APIs to automate configuration and extract
+data from SonarQube. Ops use JMX to monitor SonarQube Server.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SonarQube is available in community (free)
+and paid-for developer and enterprise editions. <a
+href="https://www.sonarqube.org/trial-request/enterprise-edition/">Enterprise fees</a>
+appear to be based on analysed code volumes, starting at €15K/year for a single
+project of up to 1 Million lines of code. Free-trial license server editions
+are available <a href="https://www.sonarqube.org/downloads/">here</a>. Various
+scanners are provided to integrate with assorted build systems (Maven, Jenkins
+etc). SonarQube can augment checkin processes for both <a
+href="https://www.sonarqube.org/gitlab-integration/">git</a> and <a
+href="https://www.sonarqube.org/bitbucket-integration/">bitbucket</a>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SQ’s Javascript solution for live, spell-checker-style
+monitoring is SonarLint (free &amp; open-source). This integrates into multiple
+IDEs for developers (eg. in <a href="https://www.sonarlint.org/vscode/">VS Code</a>),
+plus into automated CI/CD pipelines via self-hosted SonarQube or on-line
+SonarCloud. SonarLint is an IDE extension that helps developers detect/fix
+quality issues. Like a spell checker, it squiggles/underlines flaws, so they
+can be fixed before committing code. The&nbsp;underlines&nbsp;are&nbsp;unmissable,
+though a context click does provide options&nbsp;to&nbsp;further explain or
+switch off associated rules. Unlike in, say,&nbsp;IntelliJ,&nbsp;there&nbsp;is
+no option for an immediate auto fixes. SonarLint currently encapsulates 220+ <a
+href="https://rules.sonarsource.com/javascript">rules</a> which are essentially
+whilst-working Lint enhancements. Additional custom JS rules can be written in
+Java or into ESLint and imported.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SonarLint download is available via
+the VS Code extensions left-tab, or from <a
+href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode">here</a>.
+To run, it requires Node.js (version 8+), the&nbsp;<a
+href="https://marketplace.visualstudio.com/items?itemName=redhat.java"
+target="_blank">Language support for Java</a>&nbsp;VSCode extension (version
+0.56.0+), plus Java Runtime (JRE) 8 or 11. The JRE path can be set explicitly
+via a <i>sonarlint.ls.javaHome</i>&nbsp;variable in VS Code settings.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SQ claims to be <b>standards-based</b>:
+implicitly validating its rule-set, in-part perhaps for marketing purposes.
+This should be treated with at least a little scepticism.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+style='font-size:16.0pt;line-height:107%'>Criticism of SonarQube</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>One 2020 <a
+href="https://www.researchgate.net/publication/334161879_On_the_Fault_Proneness_of_SonarQube_Technical_Debt_Violations_A_comparison_of_eight_Machine_Learning_Techniques">study</a>
+assessed the accuracy of the SQ fault-prediction model and whether SQ
+violations are actually fault-prone. The authors conducted an empirical study
+covering 21 mature open-source Java projects. Result: <i>violations classified
+as bugs by SonarQube hardly ever become a failure. Consequently, the accuracy
+of the fault-prediction power proposed by SonarQube is extremely low -- rules
+applied by SonarQube for calculating technical debt should be thoroughly
+investigated, their harmfulness confirmed -- <u>companies should carefully
+consider which rules they really need to apply</u>, especially if their goal is
+to reduce fault-proneness</i>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+style='font-size:16.0pt;line-height:107%'>Test Coverage</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Note that SonarSource analyzers <a
+href="https://docs.sonarqube.org/latest/analysis/coverage/">do not run tests</a>
+or generate coverage reports, but do provide configurable comma-delimited lists
+for paths to LCOV coverage report files. For JS, SonarQube recommends JS, <a
+href="https://www.npmjs.com/package/jest-sonar-reporter" target="_blank">jest-sonar-reporter</a>&nbsp;or&nbsp;<a
+href="https://github.com/tornaia/karma-sonarqube-unit-reporter" target="_blank">karma-sonarqube-unit-reporter</a>,
+producing reports in the comma-delimited .lcov format. More <a
+href="https://v8.dev/blog/javascript-code-coverage">mainstream</a> preference
+for assessing JS test coverage favours Chrome Dev-Tools <a
+href="https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage">coverage
+tab</a> and/or <a href="https://istanbul.js.org/">Istanbul</a>, but Istanbul
+appears as yet <a
+href="https://community.sonarsource.com/t/show-jest-istanbul-coverage-report-numbers-on-sonar-dashbaord/16039">poorly
+integrated</a> with SonarQube (as of Nov 2019).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+style='font-size:16.0pt;line-height:107%'>Worth having?</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>SonarLint is freely available for
+VS-Code and JetBrains IDEs. Its continuous spell-checker style linting (code
+sniffing) some may find helpful, but consistent implementation would require
+configuring to match ESLint rules already being applied by the team. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Further investigation will be
+required to assess JS test-coverage tools that usefully integrate with SQ. <a
+href="https://istanbul.js.org/">Istanbul</a> is a strong candidate. Even
+without SQ, it appears to <a
+href="https://www.atlassian.com/continuous-delivery/software-testing/code-coverage">integrate
+with Atlassian</a>. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Given the availability of ESLint for
+code validation &amp; the team’s culturally imposed discipline in using it
+(both at checkin &amp; PR/review), there appears <u>little justification</u>
+for the significant annual enterprise costs of integrating SonarQube into our BitBucket
+process. </span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
