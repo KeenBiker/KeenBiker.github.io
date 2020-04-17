@@ -1,0 +1,670 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-GB link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+style='font-size:20.0pt;line-height:107%'>JIRA workflow</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:12.0pt;line-height:107%'>Q: “How do tickets move thru different
+ticket states? What’s reqd at each stage?”</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:12.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>JIRA facilitates tracking of <a
+href="https://confluence.atlassian.com/adminjiracloud/issue-types-844500742.html">issue
+types</a>. Core of-the-shelf types are Task and Subtask, whilst other categories
+that are available include Development (types: Epic, Story, Bug) and Service Desk
+(types: Incident, Change). User-defined, bespoke types can also be <a
+href="https://confluence.atlassian.com/adminjiracloud/adding-editing-and-deleting-an-issue-type-844500747.html">added</a>.
+Issue types have associated project templates, that reflect typical underlying
+purpose, process and information changes. Available templates or <a
+href="http://thegreyblog.blogspot.com/2010/11/atlassian-jira-configuration-tutorial.html">schemes</a>
+(collections of configured values), are based on JIRA products subscribed to: eg.
+if subscribed to&nbsp;Jira Service Desk, users can base projects on&nbsp;IT service
+desk&nbsp;and&nbsp;Customer service desk&nbsp;templates. Such templates provide
+configuration options for permissions, notifications, issue types etc., plus basic
+workflows.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'><a
+href="https://www.atlassian.com/blog/jira-software/building-workflow-awesome">JIRA
+workflows</a> concern the stepwise progression of jobs or issues through an
+organisation’s processes. JIRA provides default workflows that can be copied &amp;
+customised using <a
+href="https://confluence.atlassian.com/jira061/jira-administrator-s-guide/configuring-workflow/classic-mode-workflow-designer">workflow
+designer</a>: a graphical workflow layout tool. This can create &amp; edit
+statuses and transitions using drag-n-drop, specify screens, plus configure <a
+href="https://confluence.atlassian.com/adminjiraserver072/advanced-workflow-configuration-828787971.html">advanced
+transition options</a>.&nbsp;The tool auto-validates workflows, highlighting
+statuses that have no incoming or outgoing transitions.&nbsp;JIRA workflows involve
+the following concepts …</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Status</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– where an issue is within
+     a particular workflow (eg. <i>In Progress</i> or <i>Under Review</i>). An
+     issue can only be in one state at a time. Statuses are&nbsp;<i>global</i>,
+     so changes in definition will manifest to all workflows that use a
+     particular status.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Transition</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;is a one-way link/move
+     between&nbsp;two statuses that can be customised using key-value
+     properties.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Resolution</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– why the Issue is no
+     longer in flight (eg. because it’s completed).</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Assignee</span></b><span
+     style='font-size:16.0pt;line-height:107%'> refers to a person/actor/owner
+     temporarily responsible for an issue. Assignment can be automatic via a
+     post function, or surfaced via a transition screen, so the next issue
+     owner can be chosen.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Conditions</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– control who can action a
+     transition.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Validators</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– pre-transition checks,
+     eg. only allow transitions to occur when specific criteria are satisfied.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Post Functions</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– make additional changes
+     to issues following transitions (eg. remove a resolution if issue is
+     reopened, or setting <i>assignee: Unassigned</i>)</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Triggers</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– auto-transition on an event.
+     Eg. auto-move from <i>In Progress</i> to <i>Under Review</i> when code is submitted
+     for review.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Workflow properties</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– set properties for
+     transitions. Eg. only display resolutions that are relevant to a specific
+     Issue type.</span></li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><span
+     style='font-size:16.0pt;line-height:107%'>Workflow schemes</span></b><span
+     style='font-size:16.0pt;line-height:107%'>&nbsp;– associate workflows and
+     issue types.</span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Some <a
+href="https://www.atlassian.com/blog/jira-software/building-workflow-awesome">top
+tips</a> for designing JIRA workflows</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-size:16.0pt;line-height:107%'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:107%'>Gather all of
+your stakeholders. Workflow is described as <i>scaling culture, about people</i>,
+so to build a process around a set of people, first identify all involved
+stakeholders. Spend time talking with each one to understand their priorities,
+then draft a whiteboard workflow &amp; collectively walk through use-cases,
+refining via feedback.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-size:16.0pt;line-height:107%'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:107%'>KISS (Keep it
+simple). Each status adds transitions, conditions &amp; complexity: <i>Whenever
+adding a new status, make sure you have no other option, like returning an
+issue to a previous state</i>.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-size:16.0pt;line-height:107%'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:16.0pt;line-height:107%'>Treat workflow
+development like iterative software development: discuss, design, validate
+against use-cases, deploy, track deviations, review, refine <i>. . .</i></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>In proposing an idealised JIRA-based
+workflow, it’s worth noting some <a
+href="https://community.atlassian.com/t5/Jira-articles/7-reasons-why-use-of-Jira-can-be-frustrating-part-1/ba-p/1013802">criticism</a>
+of JIRA: that <i>allowing a tool to define our process is the real antipattern.
+. . Jira on its own doesn’t have the capabilities for proper project management.
+. . the process of breaking down work into small tasks and assigning them to
+team members makes their focus shift too much to the ‘micro’ side and forget
+about the ‘macro’. Without the context . . . everyone cares only about their
+own issues, so the teamwork becomes just running the tickets through the board .
+. . reports consist mostly of velocity and ticket burndown charts, which often
+don’t show the actual amount of value brought to the customer</i>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'> </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'><a
+href="https://techcrunch.com/2016/12/11/death-to-jira/">Elsewhere</a>: <i>JIRA tickets
+come with built-in assumptions . . . that the feature / behaviour described is
+discrete. That it is ultimately binary, i.e. either complete or not. That it
+can be individually estimated. That it can be worked on in relative isolation.
+That its connections to&nbsp;other&nbsp;tickets can be modelled very simply,
+using JIRA’s childishly simple notion of linked tickets . . . (devs) are
+implicitly pushed to&nbsp;architect&nbsp;software in a way that maps to the
+JIRA tickets, even if this isn’t technically optimal</i>. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Or <a
+href="https://techcrunch.com/2018/12/09/jira-is-an-antipattern/">here</a>: <i>JIRA
+implicitly teaches everyone to ignore the larger vision while focusing on
+details. There is no whole. At best there is an Epic, but the whole point of an
+Epic is to be decomposed into smaller pieces to be worked on independently.
+JIRA encourages the disintegration of the macro vision</i>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:16.0pt;line-height:107%'>Factoring such misgivings into a
+proposed workflow for JIRA-based code development, I suggest emphasis be given
+to this <i>macro vision</i>, to group understanding (particularly for new
+joiners) and to providing <i>big picture</i> context for new tasks, as well as specific
+objectives or actual test criteria against which code for review can be
+measured. . .</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:8.0pt;line-height:107%'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>&nbsp;</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status/Transition Tag</span></b></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Notes</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>In discussion</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Outline task &amp; deliverables in
+  discussion with customer &amp;/or team. </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Requirements captured</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>On backlog</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Prepare JIRA ticket. Task spec, ideally,
+  will explain work such that all team members can understand expectations,
+  plus provide metrics/objectives against which delivery can be assessed</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Team briefed</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>Timing allocated</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Group sprint planning re. ticket
+  dependencies, hence development order &amp; (initial) task time, to manage
+  expectations</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Assign coder</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>In work</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Assignee performs a git pull (system
+  update), creates branch off-of master or ‘webpack releases’, proceeds to
+  implement solution, routinely running ESLint &amp; unit test validation on
+  new code, prior to pushing commits.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Iterate design: assignee may repeatedly
+  review evolving implementation with user/customer. User feedback should always
+  be included on JIRA ticket. </span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If user feedback extends work &amp; impacts
+  sprint, reapply <i>Team Briefed </i>transition (ie. discuss any delay). </span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If users are satisfied, apply <i>Solution
+  implemented</i> transition.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Solution implemented</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>Code Review Requested</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Coder creates Pull Request &amp;
+  notifies candidate reviewers</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Reviewer accepts task</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>Code In Review</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Reviewer(s) follow team-approved,
+  list-based procedure, including pulling-down &amp; building the implementer’s
+  feature branch. Comments feedback via JIRA ticket &amp; team email.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If reviewer(s) requests changes, status
+  returns to <i>In work</i>.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If reviewer(s) approves changes, apply
+  transition <i>Review approved</i></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Review approved</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>Code merge</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Approved code is merged by Build Lead
+  (incl. version tags etc.) as per procedure on relevant team Confluence page</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Proceed to test</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>In test</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Team tester conducts end-to-end integration
+  assessments.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If tester requests changes, status
+  returns to <i>In work</i>.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>If tester approves changes, apply
+  transition <i>Deploy ready.</i></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Deploy ready</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>In deployment</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>Build Lead deploys new versions as advised
+  by tester, following procedure as described on relevant team Confluence page</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt;color:black'>Transition</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt;color:black'>Code deployed</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=76 valign=top style='width:57.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:8.0pt'>Status</span></b></p>
+  </td>
+  <td width=131 valign=top style='width:98.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><i><span style='font-size:8.0pt'>Closed</span></i></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.0pt'>JIRA ticket complete</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+style='font-size:8.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
