@@ -36,7 +36,7 @@ body {
   font-style: italic;
   font-weight: normal;
   text-align: justify;
-  margin-left: 110px;
+  margin-left: 15%;
   transform: translateY(-110px);
 }
 .topic-link {
