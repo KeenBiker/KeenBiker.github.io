@@ -1,0 +1,24 @@
+.carddemo  .card-media {
+  background-color: #999999; 
+}
+
+.gridListdemo  md-grid-list {
+  margin: 8px; }
+
+.gridListdemo  .darkgrey {
+  background: darkgrey; }
+
+.gridListdemo  .green {
+  background: #b9f6ca; }
+
+.gridListdemo  .yellow {
+  background: #ffff8d; }
+
+.gridListdemo  .blue {
+  background: #84ffff; }
+
+.gridListdemo  .purple {
+  background: #b388ff; }
+
+.gridListdemo  .red {
+  background: #ff8a80; }
